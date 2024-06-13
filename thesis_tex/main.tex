@@ -1,0 +1,66 @@
+\documentclass[11pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{cmbright}
+\usepackage{amsmath}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={160mm,257mm},
+ left=30mm,
+ top=20mm,
+ }
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\@makechapterhead}
+  {\@chapapp\space\thechapter\par\nobreak\vskip 20\p@}
+  {\Huge\thechapter\space}
+  {}{}
+\makeatother
+
+
+\title{
+{Dynamics of the dissipative four-state system}\\
+{\large University of Hamburg}\\
+}
+\author{Yannic Joshua Banthien}
+\date{April 2025}
+
+\begin{document}
+
+\maketitle
+
+\chapter*{Abstract}
+Abstract goes here
+
+\chapter*{Dedication}
+To mum and dad
+
+\chapter*{Declaration}
+I declare that..
+
+\chapter*{Acknowledgements}
+I want to thank...
+
+\tableofcontents
+
+\chapter{Introduction}
+\input{chapters/introduction}
+
+\chapter{Chapter 2}
+\input{chapters/chapter02}
+
+\chapter{Chapter 3}
+\input{chapters/chapter03}
+
+\chapter{Chapter 4}
+\input{chapters/chapter04}
+
+\chapter{Conclusion}
+\input{chapters/conclusion}
+
+\appendix
+\chapter{Appendix}
+\input{chapters/appendix}
+
+\end{document}

@@ -3,12 +3,19 @@ import scipy
 import math
 import matplotlib.pyplot as plt
 
+params = {'text.usetex': True,
+          'text.latex.preamble': r'\usepackage{cmbright} \usepackage{amsmath}'}
+plt.rcParams.update(params)
 
 #set potential parameters and amount of SHO states considered
 
-E_b = float(input('Barrier height: '))
+E_b = 1.4
 
-epsilon = float(input('Bias: '))
+epsilon = 0.08
+
+#E_b = float(input('Barrier height: '))
+
+#epsilon = float(input('Bias: '))
 
 K=48
 
@@ -63,6 +70,17 @@ q_n, positionEigenvectors_T = np.linalg.eigh(Q)
 
 positionEigenvectors = np.transpose(positionEigenvectors_T)
 
+inv_positionEigenvectors = np.linalg.inv(positionEigenvectors)
+
+H_loc = 1/2 * np.array([[E_n[0]+E_n[1], E_n[0]-E_n[1], 0, 0],
+                        [E_n[0]-E_n[1], E_n[0]+E_n[1], 0, 0],
+                        [0, 0, E_n[2]+E_n[3], E_n[2]-E_n[3]],
+                        [0, 0, E_n[2]-E_n[3], E_n[2]+E_n[3]]])
+
+H_DVR = inv_positionEigenvectors.dot(H_loc).dot(positionEigenvectors)
+
+print(H_DVR)
+
 
 #printing
 
@@ -108,7 +126,7 @@ x=np.linspace(-6,6,600)
 fig, ax1 = plt.subplots()
 
 ax1.set_xlabel(r"$q$")
-ax1.set_ylabel(r"$V_0(q)$")
+ax1.set_ylabel(r"$\mathsf{V_0(q)}$")
 ax1.set_xlim(-6, 6)
 ax1.set_ylim(-1, 2)
 ax1.set_xticks([-6,-4,-2,0,2,4,6])
@@ -129,7 +147,7 @@ ax1.text(6.5, E_n[3] +E_b -0.05, r'$E_4$')
 ax1.set_aspect(5)
 ax1.legend()
 
-#plt.savefig('test1.png', dpi=300)
+plt.savefig('test1.png', dpi=300)
 
 fig, ax2 = plt.subplots()
 
@@ -148,14 +166,14 @@ ax2.hlines(y= E_n[0] +E_b, xmin=-6, xmax=6, linewidth=0.5, color='k')
 ax2.hlines(y= E_n[1] +E_b, xmin=-6, xmax=6, linewidth=0.5, color='k')
 ax2.hlines(y= E_n[2] +E_b, xmin=-6, xmax=6, linewidth=0.5, color='k')
 ax2.hlines(y= E_n[3] +E_b, xmin=-6, xmax=6, linewidth=0.5, color='k')
-ax2.text(6.5, E_n[0] +E_b  -0.05, r'$E_1$')
+ax2.text(6.5, E_n[0] +E_b -0.05, r'$E_1$')
 ax2.text(6.5, E_n[1] +E_b -0.05, r'$E_2$')
 ax2.text(6.5, E_n[2] +E_b -0.05, r'$E_3$')
 ax2.text(6.5, E_n[3] +E_b -0.05, r'$E_4$')
 ax2.set_aspect(5)
 ax2.legend()
 
-#plt.savefig('test2.png', dpi=300)
+plt.savefig('test2.png', dpi=300)
 
 fig, ax3 = plt.subplots()
 
@@ -181,6 +199,6 @@ ax3.text(q_n[3] -0.25, -1.25, r'$q_{\beta_1}$')
 ax3.set_aspect(5)
 ax3.legend()
 
-#plt.savefig('test3.png', dpi=300)
+plt.savefig('test3.png', dpi=300)
 
-#plt.show()
+plt.show()
