@@ -1,1 +1,45 @@
-TEST TEST TEST
+In this chapter, we will consider the system of a single particle with mass $\mathcal{M}$, 
+position operator $\mathbf{q}$ and momentum operator $\mathbf{p}$.
+The particle is placed in a double-well potential, giving the Hamiltionian
+%
+\[ \mathbf{H_{DW}} = \frac{\mathbf{p}^2}{2 \mathcal{M}}  
+    + \frac{\mathcal{M}^2 \omega_0^4}{64 \Delta U} \mathbf{q}^4 
+    - \frac{\mathcal{M} \omega_0^2}{4} \mathbf{q}^2
+    - \mathbf{q} \epsilon . \]
+%
+Here, $\Delta U$ is the barrier height, $\omega_0$ is the classical oscillation frequency
+and $\epsilon$ is the bias factor of the double-well potential.
+In addition, we introduce a single cavity mode, which couples linearly to the doublet-doublet
+system and is described by
+%
+\[ \mathbf{H_{C,int}} = \Omega \mathbf{a}^{\dagger} \mathbf{a}
+    + g \mathbf{q} \left( \mathbf{a} + \mathbf{a}^{\dagger} \right) . \]
+%
+Next, the cavity mode is coupled to a bath consisting of simple harmonic oscillators. 
+For now, we will neglect the direct coupling of the DW-system to a bath:
+%
+\[ \mathbf{H_{B,int}} = \left( \mathbf{a} + \mathbf{a}^{\dagger} \right)
+    \sum_{k}^{} \nu_k \left( \mathbf{b}_k + \mathbf{b}^{\dagger}_k  \right) 
+    + \sum_{k}^{} \omega_k \mathbf{b}^{\dagger}_k  \mathbf{b}_k  . \]
+%
+For the cavity mode, we choose Ohmic damping. In the continuous limit, this means the 
+spectral density is given by
+%
+\[ J_{Ohm} \left( \omega \right) = \sum_{k}^{} \nu_k^2 \delta\left( \omega - \omega_k \right) 
+    = \kappa \omega e^{- \omega / \omega_c} , \]
+%
+where $\kappa$ is the cavity damping constant and $\omega_c$ is the cut-off frequency. \\
+According to Garg, Onuchic and Ambegaokar, this model can be mapped to a double-well 
+coupling to a bath with a peaked spectral density with the coupling term
+%
+\[ \mathbf{H_{B,DW}} = \mathbf{q} \sum_{k}^{} \lambda_k \left( \tilde{\mathbf{a}}_k  + \tilde{\mathbf{a}}^\dagger_k  \right) 
+    + \sum_{k}^{}\tilde{\omega}_k \tilde{\mathbf{a}}^\dagger_k  \tilde{\mathbf{a}}_k  . \]
+%
+and the effective bath spectral density
+%
+\[ J \left( \omega \right) = \sum_{k}^{} \lambda_k^2 \delta\left( \omega - \tilde{\omega}_k \right) 
+    = \frac{2 \alpha \omega \Omega^4}{ \left( \Omega^2 - \omega^2 \right)^2  + \left( 2 \pi \kappa \omega \Omega  \right)^2 } , \]
+%
+where $\alpha = 8 \kappa \frac{g^2}{\Omega^2}$ is the effective low-frequency damping constant.
+In the low-frequence limit, i.e. $\omega \rightarrow 0$, the effective bath spectral
+density reduces to $J \left( \omega \right) \rightarrow 2 \alpha \omega$.

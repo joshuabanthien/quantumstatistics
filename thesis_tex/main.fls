@@ -1,8 +1,8 @@
-PWD /home/joshua/Documents/master_thesis/thesis_tex
+PWD /home/joshua/Documents/master_thesis/rep/quantumstatistics/thesis_tex
 INPUT /usr/local/texlive/2024/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /home/joshua/Documents/master_thesis/thesis_tex/main.tex
+INPUT /home/joshua/Documents/master_thesis/rep/quantumstatistics/thesis_tex/main.tex
 OUTPUT main.log
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/report.cls
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/report.cls
@@ -139,5 +139,6 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/hfbright/hfbr17.pfb
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/hfbright/hfbr8.pfb
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/hfbright/hfbrbx10.pfb
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/hfbright/hfbrmi10.pfb
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/hfbright/hfbrmi8.pfb
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/hfbright/hfbrsy10.pfb
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/hfbright/hfbrsy8.pfb

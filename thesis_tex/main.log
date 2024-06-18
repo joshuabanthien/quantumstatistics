@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.6.11)  13 JUN 2024 21:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.6.11)  14 JUN 2024 17:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/joshua/Documents/master_thesis/thesis_tex/main.tex
-(/home/joshua/Documents/master_thesis/thesis_tex/main.tex
+**/home/joshua/Documents/master_thesis/rep/quantumstatistics/thesis_tex/main.tex
+(/home/joshua/Documents/master_thesis/rep/quantumstatistics/thesis_tex/main.tex
 LaTeX2e <2024-06-01>
 L3 programming layer <2024-05-27>
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/report.cls
@@ -331,7 +331,16 @@ Chapter 2.
 
 ]
 Chapter 3.
-(./chapters/chapter03.tex)
+(./chapters/chapter03.tex
+
+LaTeX Font Warning: Font shape `OT1/cmbr/bx/n' in size <8> not available
+(Font)              Font shape `OT1/cmbr/m/n' tried instead on input line 2.
+
+
+LaTeX Font Warning: Font shape `OT1/cmbr/bx/n' in size <6> not available
+(Font)              Font shape `OT1/cmbr/m/n' tried instead on input line 2.
+
+)
 
 [8
 
@@ -360,18 +369,18 @@ L3 programming layer <2024-05-27>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 3080 strings out of 473600
- 47225 string characters out of 5728708
- 1927891 words of memory out of 5000000
- 25924 multiletter control sequences out of 15000+600000
+ 3082 strings out of 473600
+ 47321 string characters out of 5728708
+ 1934891 words of memory out of 5000000
+ 25926 multiletter control sequences out of 15000+600000
  565636 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,6n,65p,339b,206s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/hfbright/hfbr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/hfbright/hfbr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/hfbright/hfbr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/hfbright/hfbrbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/hfbright/hfbrmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/hfbright/hfbrsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/hfbright/hfbrsy8.pfb>
-Output written on main.pdf (12 pages, 85556 bytes).
+ 57i,6n,65p,361b,206s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/hfbright/hfbr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/hfbright/hfbr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/hfbright/hfbr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/hfbright/hfbrbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/hfbright/hfbrmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/hfbright/hfbrmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/hfbright/hfbrsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/hfbright/hfbrsy8.pfb>
+Output written on main.pdf (12 pages, 109107 bytes).
 PDF statistics:
- 88 PDF objects out of 1000 (max. 8388607)
- 55 compressed objects within 1 object stream
+ 93 PDF objects out of 1000 (max. 8388607)
+ 58 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

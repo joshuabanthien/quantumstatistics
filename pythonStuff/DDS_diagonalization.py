@@ -11,7 +11,7 @@ plt.rcParams.update(params)
 
 E_b = 1.4
 
-epsilon = 0.08
+epsilon = 0.05
 
 #E_b = float(input('Barrier height: '))
 
@@ -140,14 +140,14 @@ ax1.hlines(y= E_n[0] +E_b, xmin=-6, xmax=6, linewidth=0.5, color='k')
 ax1.hlines(y= E_n[1] +E_b, xmin=-6, xmax=6, linewidth=0.5, color='k')
 ax1.hlines(y= E_n[2] +E_b, xmin=-6, xmax=6, linewidth=0.5, color='k')
 ax1.hlines(y= E_n[3] +E_b, xmin=-6, xmax=6, linewidth=0.5, color='k')
-ax1.text(6.5, E_n[0] +E_b -0.05, r'$E_1$')
-ax1.text(6.5, E_n[1] +E_b -0.05, r'$E_2$')
-ax1.text(6.5, E_n[2] +E_b -0.05, r'$E_3$')
-ax1.text(6.5, E_n[3] +E_b -0.05, r'$E_4$')
+ax1.text(6.5, E_n[0] +E_b -0.05, r'$\mathcal{E}_1$')
+ax1.text(6.5, E_n[1] +E_b -0.05, r'$\mathcal{E}_2$')
+ax1.text(6.5, E_n[2] +E_b -0.05, r'$\mathcal{E}_3$')
+ax1.text(6.5, E_n[3] +E_b -0.05, r'$\mathcal{E}_4$')
 ax1.set_aspect(5)
-ax1.legend()
+ax1.legend(frameon=False)
 
-plt.savefig('test1.png', dpi=300)
+plt.savefig('test1.png', dpi=300, bbox_inches='tight')
 
 fig, ax2 = plt.subplots()
 
@@ -166,14 +166,14 @@ ax2.hlines(y= E_n[0] +E_b, xmin=-6, xmax=6, linewidth=0.5, color='k')
 ax2.hlines(y= E_n[1] +E_b, xmin=-6, xmax=6, linewidth=0.5, color='k')
 ax2.hlines(y= E_n[2] +E_b, xmin=-6, xmax=6, linewidth=0.5, color='k')
 ax2.hlines(y= E_n[3] +E_b, xmin=-6, xmax=6, linewidth=0.5, color='k')
-ax2.text(6.5, E_n[0] +E_b -0.05, r'$E_1$')
-ax2.text(6.5, E_n[1] +E_b -0.05, r'$E_2$')
-ax2.text(6.5, E_n[2] +E_b -0.05, r'$E_3$')
-ax2.text(6.5, E_n[3] +E_b -0.05, r'$E_4$')
+ax2.text(6.5, E_n[0] +E_b -0.05, r'$\mathcal{E}_1$')
+ax2.text(6.5, E_n[1] +E_b -0.05, r'$\mathcal{E}_2$')
+ax2.text(6.5, E_n[2] +E_b -0.05, r'$\mathcal{E}_3$')
+ax2.text(6.5, E_n[3] +E_b -0.05, r'$\mathcal{E}_4$')
 ax2.set_aspect(5)
-ax2.legend()
+ax2.legend(frameon=False)
 
-plt.savefig('test2.png', dpi=300)
+plt.savefig('test2.png', dpi=300, bbox_inches='tight')
 
 fig, ax3 = plt.subplots()
 
@@ -197,8 +197,8 @@ ax3.text(q_n[1] -0.25, -1.25, r'$q_{\alpha_2}$')
 ax3.text(q_n[2] -0.25, -1.25, r'$q_{\beta_2}$')
 ax3.text(q_n[3] -0.25, -1.25, r'$q_{\beta_1}$')
 ax3.set_aspect(5)
-ax3.legend()
+ax3.legend(frameon=False)
 
-plt.savefig('test3.png', dpi=300)
+plt.savefig('test3.png', dpi=300, bbox_inches='tight')
 
 plt.show()
