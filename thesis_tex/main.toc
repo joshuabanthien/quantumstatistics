@@ -1,6 +1,8 @@
 \contentsline {chapter}{\numberline {1}Introduction}{6}{}%
 \contentsline {chapter}{\numberline {2}Theoretical foundations}{7}{}%
 \contentsline {chapter}{\numberline {3}The doublet-doublet system}{8}{}%
-\contentsline {chapter}{\numberline {4}Chapter 4}{9}{}%
-\contentsline {chapter}{\numberline {5}Conclusion}{10}{}%
-\contentsline {chapter}{\numberline {A}Appendix}{11}{}%
+\contentsline {section}{\numberline {3.1}The DW-system in the DVR-basis}{8}{}%
+\contentsline {section}{\numberline {3.2}Calculation of the Rate Matrix Elements}{8}{}%
+\contentsline {chapter}{\numberline {4}Chapter 4}{13}{}%
+\contentsline {chapter}{\numberline {5}Conclusion}{14}{}%
+\contentsline {chapter}{\numberline {A}Appendix}{15}{}%
