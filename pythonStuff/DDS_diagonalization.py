@@ -12,6 +12,7 @@ plt.rcParams.update(params)
 E_b = 1.4
 
 epsilon = 0.05
+#epsilon = 0
 
 #E_b = float(input('Barrier height: '))
 
@@ -77,8 +78,11 @@ H_loc = 1/2 * np.array([[E_n[0]+E_n[1], E_n[0]-E_n[1], 0, 0],
                         [0, 0, E_n[2]+E_n[3], E_n[2]-E_n[3]],
                         [0, 0, E_n[2]-E_n[3], E_n[2]+E_n[3]]])
 
-H_DVR = inv_positionEigenvectors.dot(H_loc).dot(positionEigenvectors)
+H_DVR = positionEigenvectors.dot(H_loc).dot(inv_positionEigenvectors)
 
+E_mu, DVR_energy_eigenvector = np.linalg.eigh(H_DVR)
+
+print(E_mu)
 print(H_DVR)
 
 

@@ -1,1 +1,107 @@
-TEST TEST TEST
+We want to evaluate the integral 
+%
+\begin{align}\label{bath_corr_func_app}
+\begin{split}
+    Q (\tau)
+    &= \frac{1}{\pi} \int_{0}^{\infty} \text{d}\omega \frac{J \left( \omega \right)}{\omega^2}
+    \coth\frac{\hbar\omega\beta}{2} \Bigl[ \left( 1-\cos\omega\tau \right) + \text{i}\sin\omega\tau \Bigr] \\
+    &= \frac{\alpha}{\pi} 
+    \int_{-\infty}^{\infty} \text{d}\omega \frac{1}{\omega} \frac{\Omega^4}{\left(\Omega^2-\omega^2\right)^2
+    + \left(\Gamma\omega\right)^2}
+    \coth\frac{\hbar\omega\beta}{2} \Bigl[ \left( 1-\cos\omega\tau \right) + \text{i}\sin\omega\tau \Bigr] \\
+    &= \frac{\alpha}{\pi} 
+    \int_{-\infty}^{\infty} \text{d}\omega \frac{1}{\omega} \frac{\Omega^4}{\left(\Omega^2-\omega^2\right)^2
+    + \left(\Gamma\omega\right)^2}
+    \coth\frac{\hbar\omega\beta}{2} \Bigl[ \left( 1-e^{\text{i}\omega\tau} \right) + \text{i}e^{\text{i}\omega\tau} \Bigr].
+\end{split}
+\end{align}
+%
+via the use of the residue theorem. To this end, we continue the integrand analytically 
+and examine it for poles. For clarity, we will consider the real part and the imaginary
+part seperately. The real part of (\ref{bath_corr_func_app}) reads
+%
+\begin{equation}\label{bath_corr_func_real_part_app}
+    S(\tau)=\int_{-\infty}^{\infty}\text{d}\omega F(\omega)
+    =\frac{\alpha}{\pi}\int_{-\infty}^{\infty}\text{d}\omega
+    \frac{\Omega^4}{\left(\Omega^2-\omega^2\right)^2+\left(\Gamma\omega\right)^2}
+    \frac{1-e^{\text{i}\omega\tau}}{\omega}\coth\frac{\hbar\omega\beta}{2}
+\end{equation}
+%
+The first factor has poles at the solutions of
+%
+\begin{equation}
+    \left(\Omega^2-\omega^2\right)^2+\left(\Gamma\omega\right)^2=0.
+\end{equation}
+%
+Solving this equation is done by simple algebra, revealing four simple poles at
+%
+\begin{equation}
+    \omega=\pm\frac{\text{i} \Gamma}{2}\pm\sqrt{\frac{\Gamma^2}{4}+\Omega^2}
+    =\pm\bar{\Omega}\pm\frac{\text{i}\Gamma}{2}.
+\end{equation}
+%
+The second factor does not possess any poles, since
+\begin{equation}
+    \lim_{z\rightarrow0}\frac{1-e^{\text{i}z\tau}}{z} =-\text{i}\tau.
+\end{equation}
+%
+The third factor has simple poles at the zeroes of the complex sine function, which are
+at $z=\text{i}k\pi$ for $k\in\mathbb{Z}$. The poles are therefore at
+%
+\begin{equation}
+    \frac{\hbar\omega\beta}{2}=\text{i}k\pi 
+    \Leftrightarrow \omega=\text{i}\frac{2\pi k}{\hbar\beta},
+\end{equation}
+%
+which are the bosonic Matsubara frequencies. Having identified all poles, we now have to 
+choose a suitable integration contour. In this case, we will choose the half-annulus lying 
+in the upper complex half-plane with inner radius $r$ and outer radius $R$ traversed in the
+mathematically positive sense. In the limit $R\rightarrow\infty$ and $r\rightarrow0$,
+this contour encircles the two poles of the first factor that lie in the upper half-plane
+as well as all the poles of the hyperbolic cotangent for which $k>0$.
+With this contour, our integral takes the form
+%
+\begin{equation}
+    \int_{-\infty}^{\infty}\text{d}\omega F(\omega)=2\pi\text{i}\sum_{k}\text{Res}(F,\omega_k)
+    -\lim_{r\rightarrow 0}\int_{\mathcal{C}_2}\text{d}\omega F(\omega),
+\end{equation}
+%
+where $\mathcal{C}_2$ denotes the inner half-circle and $\{ \omega_k \}_{k\in I}$ is 
+the set of all encircled poles. First, we will compute the terms coming from the 
+integration over the inner half-circle:
+%
+\begin{align}
+\begin{split}
+    \lim_{r\rightarrow 0}\int_{\mathcal{C}_2}\text{d}\omega F(\omega)
+    &= \frac{\text{i}\alpha}{\pi}\int_{\pi}^{0}\text{d}\phi\lim_{r\rightarrow 0}
+    \frac{\Omega^4}{\left(\Omega^2-r^2e^{i2\phi}\right)^2+\left(\Gamma re^{i\phi}\right)^2}
+    \left(1-e^{\text{i}re^{i\phi}\tau}\right)\coth\frac{\hbar re^{i\phi}\beta}{2} \\
+    &= -\frac{\text{i}\alpha}{\pi}\frac{2\text{i}\tau}{\hbar\beta}\int_{\pi}^{0}\text{d}\phi \\
+    &= -\frac{2\alpha}{\hbar\beta}\tau.
+\end{split}
+\end{align}
+%
+The residue at the simple pole $\omega_k$ is calculated through the formula
+%
+\begin{equation}
+    \text{Res}(F,\omega_k)=\lim_{\omega\rightarrow\omega_k}(\omega-\omega_k)F(\omega).
+\end{equation}
+%
+At the pole $\omega=\bar{\Omega}+\text{i}\Gamma/2$, this amount to 
+%
+\begin{equation}
+    \text{Res}(F,\bar{\Omega}+\text{i}\Gamma/2)=-\frac{\text{i}\alpha}{\pi}
+    \left[ \frac{\bar{\Omega}^2-\Gamma^2/4}{4\bar{\Omega}\Gamma}-\frac{\text{i}}{4} \right]
+    \frac{\sinh\hbar\beta\bar{\Omega}-\text{i}\sin\hbar\beta\Gamma/2}{\cosh\hbar\beta\bar{\Omega}-\cos\hbar\beta\Gamma/2}
+    (1-e^{\text{i}\bar{\Omega}\tau}e^{-\Gamma/2\tau})
+\end{equation}
+%
+and conversely for $\omega=-\bar{\Omega}+\text{i}\Gamma/2$
+%
+\begin{equation}
+    \text{Res}(F,\bar{\Omega}+\text{i}\Gamma/2)=-\frac{\text{i}\alpha}{\pi}
+    \left[ \frac{\bar{\Omega}^2-\Gamma^2/4}{4\bar{\Omega}\Gamma}+\frac{\text{i}}{4} \right]
+    \frac{\sinh\hbar\beta\bar{\Omega}+\text{i}\sin\hbar\beta\Gamma/2}{\cosh\hbar\beta\bar{\Omega}-\cos\hbar\beta\Gamma/2}
+    (1-e^{-\text{i}\bar{\Omega}\tau}e^{-\Gamma/2\tau}).
+\end{equation}
+%
