@@ -1,0 +1,121 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{breqn}
+\usepackage{braket}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={160mm,257mm},
+ left=30mm,
+ top=20mm,
+ }
+\usepackage{etoolbox}
+
+\title{Single Double Well in DVR}
+
+\begin{document}
+
+\maketitle
+
+\section{Whatever}
+
+Consider a quantum mechanical particle trapped inside a double-well potential. The system
+Hamiltonian is given by 
+%
+\begin{equation}\label{DW_HAMILTONIAN}
+    \mathbf{H}_{\text{DW}} = \frac{\mathbf{p}^2}{2\mathcal{M}} + \frac{\mathcal{M}^2\omega_0^4}{64\Delta U}\mathbf{q}^4
+    - \frac{\mathcal{M}\omega_0^2}{4}\mathbf{q}^2 -\mathbf{q}\varepsilon,
+\end{equation}
+%
+where $\mathbf{q}$ and $\mathbf{p}$ are the position and respectively the momentum operators of 
+the particle, $\mathcal{M}$ is the mass of the particle, $\omega_0$ is the classical 
+oscillation frequency around the well minima, $\Delta U$ is the barrier height and
+$\varepsilon$ is the bias factor of the potential. 
+For simplicity, we first introduce dimensionless quantities according to
+%
+\begin{align}
+    \tilde{t}&=\omega_0t, \ \ \ \ \ \tilde{\mathbf{q}}=\sqrt{\frac{\mathcal{M}\omega_0}{\hbar}}\mathbf{q},
+    \ \ \ \ \ \tilde{\mathbf{p}}=\sqrt{\frac{1}{\mathcal{M}\hbar\omega_0}}\mathbf{p}, \\
+    E_{\text{B}}&=\frac{\Delta U}{\omega_0}, \ \ \ \ \ \tilde{\varepsilon}=\frac{1}{\hbar\omega_0}\sqrt{\frac{\hbar}{\mathcal{M}\omega_0}}\varepsilon,
+    \ \ \ \ \ \tilde{\mathbf{H}}_{\text{DW}}=\frac{1}{\hbar\omega_0}\mathbf{H}_{\text{DW}}.
+\end{align}
+%
+Inserting the tilded expressions and consequently omitting the tildes the dimensionless 
+Hamiltonian, in units of $\hbar\omega_0$, reads
+%
+\begin{equation}
+    \mathbf{H}_{\text{DW}} = \frac{1}{2}\mathbf{p}^2+\frac{1}{64E_{\text{B}}}\mathbf{q}^4-\frac{1}{4}\mathbf{q}^2 -\mathbf{q}\varepsilon.
+\end{equation}
+%
+Exploiting the similarity of
+(\ref{DW_HAMILTONIAN}) with the Hamiltonian of a simple harmonic oscillator, it is a good
+starting point to rewrite $\mathbf{H}_{\text{DW}}$ in the basis of the energy eigenstates of
+the SHO. Denoting by $\{ \ket{\psi_i} \}_{i \in I}$, $I=\{ 0,1,2,... \}$ the set of energy
+eigenstates of the SHO and using the known action of $\mathbf{q}$ and $\mathbf{p}$ on 
+these states, it is straightfoward to calculate that
+%
+\begin{equation}
+\begin{split}
+    \bra{\psi_m}\mathbf{p}^2\ket{\psi_n} &= \frac{1}{2} \left[(2n+1)\delta_{m,n}
+    +\sqrt{n(n-1)}\delta_{m,n-2} - \sqrt{(n+2)(n+1)}\delta_{m,n+2} \right],  \\
+    \bra{\psi_m}\mathbf{q}^4\ket{\psi_n} &= \frac{1}{4} \Bigl[ \sqrt{n(n-1)(n-2)(n-3)}\delta_{m,n-4} 
+    +(4n-2)\sqrt{n(n-1)}\delta_{m,n-2} \\
+    &\ \ \ + (6n^2+6n+3)\delta_{m,n} + (4n+6)\sqrt{(n+2)(n+1)}\delta_{m,n+2} \\
+    &\ \ \ + \sqrt{(n+4)(n+3)(n+2)(n+1)}\delta_{m,n+4} \Bigr], \\
+    \bra{\psi_m}\mathbf{q}^2\ket{\psi_n} &= \frac{1}{2} \Bigl[ (2n+1)\delta_{m,n}
+    +\sqrt{n(n-1)}\delta_{m,n-2} +\sqrt{(n+2)(n+1)}\delta_{m,n+2} \Bigr], \\
+    \bra{\psi_m}\mathbf{q}\ket{\psi_n} &= \frac{1}{\sqrt{2}} \Bigl[ \sqrt{n}\delta_{m,n-1}
+    +\sqrt{n+1}\delta_{m,n+1} \Bigr].
+\end{split}
+\end{equation}
+%
+From these formulars one can easily compute the matrix elements of the Hamiltonian in 
+the SHO basis, $H^{\text{SHO}}_{mn}=\bra{\psi_m}\mathbf{H}_{\text{DW}}\ket{\psi_n}$. 
+Since this matrix is in principle infinite-dimensional, we have to truncate it after its 
+first $K$ rows and columns. Indeed, we have to choose $K$ large enough such that the first
+four eigenvalues of the truncated Hamiltonian matrix have converged closely enough to 
+their actual value. Diagonalizing this $K\times K$-matrix yields a set of energy eigenvalues
+and eigenstates.
+Since we are interested in the dynamics of the energetically lowest
+doublet-doublet system, we now restrict the system to its first four energy eigenstates, 
+leaving a diagonal Hamiltonian and its four eigenstates,
+%
+\begin{equation}
+    H_{\text{DW}}^{\text{Eig}} = \text{diag}(\mathcal{E}_1,\mathcal{E}_2,\mathcal{E}_3,\mathcal{E}_4),
+    \ \ \ H_{\text{DW}}^{\text{Eig}}\ket{n}=\mathcal{E}_n\ket{n}.
+\end{equation}
+%
+As our interest lies in the decay of states localized in one of the wells, it is instructive
+to define so-called localized states via 
+%
+\begin{equation}
+\begin{split}
+    \ket{L_1}&=\frac{1}{\sqrt{2}} ( \ket{1}-\ket{2} ), \ \ \ \ket{L_2}=\frac{1}{\sqrt{2}}( \ket{3}-\ket{4} ), \\
+    \ket{R_1}&=\frac{1}{\sqrt{2}} ( \ket{1}+\ket{2} ), \ \ \ \ket{R_2}=\frac{1}{\sqrt{2}}( \ket{3}+\ket{4} ).
+\end{split}
+\end{equation}
+%
+In this basis, the Hamiltonian takes the form 
+%
+\begin{equation}
+    H_{\text{DW}}^{\text{Loc}}=\sum_{i=1,2} \Bigl[ \bar{\mathcal{E}}_i ( \ket{L_i}\bra{L_i}+\ket{R_i}\bra{R_i} )
+    - \frac{\Delta_i}{2} (\ket{L_i}\bra{R_i}+\ket{R_i}\bra{L_i}) \Bigr],
+\end{equation}
+%
+where $\bar{\mathcal{E}}_1=(\mathcal{E}_1+\mathcal{E}_2)/2$, $\bar{\mathcal{E}}_2=(\mathcal{E}_3+\mathcal{E}_4)/2$, 
+$\Delta_1=\mathcal{E}_2-\mathcal{E}_1$ and $\Delta_2=\mathcal{E}_4-\mathcal{E}_3$.
+Similarly, the position operator $\mathbf{q}$ can be expressed as
+%
+\begin{equation}
+\begin{split}
+    \mathbf{q}^{\text{Loc}} &= q_{12}(\ket{R_1}\bra{R_1}-\ket{L_1}\bra{L_1})+q_{34}(\ket{R_2}\bra{R_2}-\ket{L_2}\bra{L_2}) \\
+    &+ \frac{q_{14}+q_{23}}{2}(\ket{R_1}\bra{R_2}+\ket{R_2}\bra{R_1}-\ket{L_1}\bra{L_2}-\ket{L_2}\bra{L_1}) \\
+    &+ \frac{q_{14}-q_{23}}{2}(\ket{R_2}\bra{L_1}+\ket{L_1}\bra{R_2}-\ket{L_2}\bra{R_1}-\ket{R_1}\bra{L_2}).
+\end{split}
+\end{equation}
+%
+
+\end{document}

@@ -1,0 +1,162 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{breqn}
+\usepackage{braket}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={160mm,257mm},
+ left=30mm,
+ top=20mm,
+ }
+\usepackage{etoolbox}
+
+\title{Rate Matrix Elements for the Single Double Well}
+
+\begin{document}
+
+\maketitle
+
+\section{Whatever}
+
+Our goal is to calculate the Markov-approximated rate matrix elements in
+the DVR-basis to the lowest order, given by
+%
+\begin{equation}\label{rate_matrix_element}
+    \Gamma_{\mu\nu}^{(2)} = \frac{\Delta_{\mu\nu}^2}{2}
+    \int_{0}^{\infty}\text{d}\tau e^{-(q_\mu -q_\nu)^2 S(\tau)}
+    \cos\Bigl[ (E_\mu-E_\nu)\tau +(q_\mu -q_\nu)^2 R(\tau)\Bigr],
+\end{equation}
+%
+where $S(\tau)$ and $R(\tau)$ are the real and respectively imaginary part 
+of the bath autocorrelation function, the $q_\mu$ are the eigenvalues of
+the position operator in the DVR-basis, further $\Delta_{\mu\nu}$ and the 
+$E_\mu$ are given by the off-diagonal and respectively diagonal matrix
+elements of the Hamiltonian in the DVR-basis.
+We have already seen that in the weak-damping approximation, the bath
+autocorrelation function is
+%
+\begin{align}
+    S(\tau)&= Y(\cos\Omega\tau-1)+A\tau\cos\Omega\tau+B\tau+C\sin\Omega\tau+\mathcal{O}(\Gamma^2)\\
+    R(\tau)&= W\sin\Omega\tau+V\Bigl(1-\cos\Omega\tau-\frac{\Omega}{2}\tau\sin\Omega\tau\Bigr)+\mathcal{O}(\Gamma^2),
+\end{align}
+%
+with the temperature-dependent coefficients being
+%
+\begin{align}
+    Y&=-\frac{4g^2}{\Omega^2}\coth\frac{\Omega}{2T}, \ \ \ W=\frac{4g^2}{\Omega^2} \\
+    A&=\Gamma\frac{g^2}{2\Omega^2}\coth\frac{\Omega}{2T}, \ \ \ B=\Gamma\frac{8g^2T}{\Omega^2} \\
+    C&=-\Gamma\frac{2g^2}{\Omega^3}\frac{\Omega/T+2\sinh\Omega/T}{\cosh\Omega/T-1}, \ \ \ V=\Gamma\frac{4g^2}{\Omega^3}.
+\end{align}
+%
+Inserting all of this into (\ref{rate_matrix_element}) and absorbing the 
+$(q_\mu-q_\nu)^2$ into the temperature-dependent coefficients, e.g.
+redefining $(q_\mu-q_\nu)^2Y\rightarrow Y$, and renaming $E_\mu-E_\nu=\Delta E_{\mu\nu}$
+the rate matrix elements then read
+%
+\begin{equation}\label{rate_matrix_element_2}
+\begin{split}
+    \Gamma_{\mu\nu}^{(2)} =\frac{\Delta_{\mu\nu}^2}{2}
+    \int_{0}^{\infty}\text{d}\tau &e^{-Y(\cos\Omega\tau-1)-A\tau\cos\Omega\tau-B\tau-C\sin\Omega\tau} \\
+    & \times \cos\Bigl[\Delta E_{\mu\nu}\tau +W\sin\Omega\tau+V\Bigl(1-\cos\Omega\tau-\frac{\Omega}{2}\tau\sin\Omega\tau\Bigr)\Bigr].
+\end{split}
+\end{equation}
+%
+This integral converges if the condition $B>A$ is met, corresponding to
+%
+\begin{equation}
+    \frac{4T}{\Omega}>\coth\frac{\Omega}{2T}.
+\end{equation}
+%
+After using Euler's formula for the cosine and rarranging, we can rewrite 
+(\ref{rate_matrix_element_2}) as
+%
+\begin{equation}\label{rate_matrix_element_2}
+\begin{split}
+    \Gamma_{\mu\nu}^{(2)} &=\frac{\Delta_{\mu\nu}^2}{2}e^Y\int_{0}^{\infty}
+    \text{d}\tau e^{-B\tau}\text{Re}\Bigl[ e^{-Y\cos\Omega\tau+\text{i}W\sin\Omega\tau} \\
+    &\times e^{-A\tau\cos\Omega\tau-\text{i}V\Omega\tau/2\sin\Omega\tau 
+    -C\sin\Omega\tau+\text{i}V-\text{i}V\cos\Omega\tau}e^{\text{i}\Delta E_{\mu\nu}\tau}\Bigr].
+\end{split}
+\end{equation}
+%
+We first deal with the exponential containing the coefficients of $0$-th 
+order in $\Gamma$. Employing the Jacobi-Anger expansion 
+%
+\begin{equation}
+    e^{\text{i}zcos\theta} = \sum_{n=-\infty}^{+\infty}\text{i}^n J_n(z)e^{\text{i}n\theta},
+\end{equation}
+%
+it is possible to rewrite the exponential in question as 
+%
+\begin{equation}
+    e^{-Y\cos\Omega\tau+\text{i}W\sin\Omega\tau} = 
+    \sum_{n=-\infty}^{+\infty}(-\text{i})^n J_n(u_0) e^{\text{i}n\Omega\tau +n\Omega/(2T)},
+\end{equation}
+%
+with $J_n(z)$ the $n$-th Bessel function of the first kind and 
+$u_0 = \sqrt{W^2 - Y^2}$. Notice that $(-\text{i})^n J_n(u_0) \in \mathbb{R}$ 
+for all $n$.
+For the second exponential containing the terms
+linear in $\Gamma$, we keep with the weak-damping approximation and thus 
+expand the exponential, only keeping first order terms:
+%
+\begin{equation}
+\begin{split}
+    &e^{-A\tau\cos\Omega\tau-\text{i}V\Omega\tau/2\sin\Omega\tau 
+    -C\sin\Omega\tau+\text{i}V-\text{i}V\cos\Omega\tau} \\
+    &\approx 1 -A\tau\cos\Omega\tau-\text{i}V\Omega\tau/2\sin\Omega\tau 
+    -C\sin\Omega\tau+\text{i}V-\text{i}V\cos\Omega\tau.
+\end{split}
+\end{equation}
+%
+Consequently, we write
+%
+\begin{equation}
+\begin{split}
+    \Gamma_{\mu\nu}^{(2)} &=\frac{\Delta_{\mu\nu}^2}{2}e^Y \sum_{n=-\infty}^{+\infty}
+    (-\text{i})^n J_n(u_0)e^{n\Omega/(2T)}\int_{0}^{\infty}\text{d}\tau
+    \text{Re}\Big[ e^{\text{i}n\Omega\tau+\text{i}\Delta E_{\mu\nu}\tau} 
+    -A\tau e^{\text{i}n\Omega\tau+\text{i}\Delta E_{\mu\nu}\tau}\cos{\Omega\tau} \\
+    &-\text{i}V\frac{\Omega}{2}\tau e^{\text{i}n\Omega\tau+\text{i}\Delta E_{\mu\nu}\tau}\sin\Omega\tau
+    -C e^{\text{i}n\Omega\tau+\text{i}\Delta E_{\mu\nu}\tau}\sin\Omega\tau 
+    -\text{i}V e^{\text{i}n\Omega\tau+\text{i}\Delta E_{\mu\nu}\tau}\cos\Omega\tau \\
+    &+ \text{i}Ve^{\text{i}n\Omega\tau+\text{i}\Delta E_{\mu\nu}\tau}\Big].
+\end{split}
+\end{equation}
+%
+It is now a simple matter to calculate the real part of the terms in
+the square brackets and calculate the integral of the remaining expression, 
+which then just contains products of trigonometric functions. Doing so
+and summing over $n=-1,0,1$, discarding terms containing $2\Omega$, we arrive
+at the final form of the approximated rate matrix elements,
+%
+\begin{equation}
+\begin{split}
+    \Gamma_{\mu\nu}^{(2)} =\frac{\Delta_{\mu\nu}^2}{2}e^Y \Biggl\{  
+    &\text{i}J_{-1}(u_0)e^{n\Omega/(2T)}\Bigl[ \frac{B}{B^2+(\Delta E_{\mu\nu}-\Omega)^2} 
+    - \Bigl( \frac{A}{2}+\frac{V\Omega}{4} \Bigr) \frac{B^2}{(B^2+\Delta E_{\mu\nu}^2)^2} \\ 
+    &-\Bigl( \frac{C}{2}-\frac{V}{2} \Bigr) \frac{\Delta E_{\mu\nu}}{B^2+\Delta E_{\mu\nu}^2} 
+    -V\frac{\Delta E_{\mu\nu}-\Omega}{B^2+(\Delta E_{\mu\nu}-\Omega)^2} \Bigr] \\
+    &+J_0(u_0) \Bigl[ \frac{B}{B^2+\Delta E_{\mu\nu}^2} - \Bigl( \frac{A}{2}-\frac{V\Omega}{4} \Bigr)
+    \frac{B^2-(\Delta E_{\mu\nu}-\Omega)^2}{(B^2+(\Delta E_{\mu\nu}-\Omega))^2} \\
+    &- \Bigl( \frac{A}{2}+\frac{V\Omega}{4} \Bigr)
+    \frac{B^2-(\Delta E_{\mu\nu}+\Omega)^2}{(B^2+(\Delta E_{\mu\nu}+\Omega))^2} 
+    + \Bigl( \frac{C}{2}+\frac{V}{2} \Bigr) \frac{\Delta E_{\mu\nu}-\Omega}{B^2+(\Delta E_{\mu\nu}-\Omega)^2} \\
+    &+ \Bigl( \frac{V}{2}-\frac{C}{2} \Bigr) \frac{\Delta E_{\mu\nu}+\Omega}{B^2+(\Delta E_{\mu\nu}+\Omega)^2} 
+    -V\frac{\Delta E_{\mu\nu}}{B^2+\Delta E_{\mu\nu}^2} \Bigr] \\
+    &-\text{i}J_1(u_0) \Bigl[ \frac{B}{B^2+(\Delta E_{\mu\nu}+\Omega)^2} 
+    -\Bigl( \frac{A}{2}-\frac{V\Omega}{4} \Bigr)
+    \frac{B^2-\Delta E_{\mu\nu}^2}{(B^2+\Delta E_{\mu\nu}^2)^2} \\ 
+    &+ \Bigl( \frac{C}{2}+\frac{V}{2} \Bigr) \frac{\Delta E_{\mu\nu}}{B^2+\Delta E_{\mu\nu}^2} 
+    -V\frac{\Delta E_{\mu\nu}+\Omega}{B^2+(\Delta E_{\mu\nu}+\Omega)^2}\Bigr]
+    \Biggr\}.
+\end{split}
+\end{equation}
+%
+
+
+\end{document}

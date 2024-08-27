@@ -2,7 +2,7 @@ In this chapter, we will consider the system of a single particle with mass $\ma
 position operator $\mathbf{q}$ and momentum operator $\mathbf{p}$.
 The particle is placed in a double-well potential, giving the Hamiltionian
 %
-\begin{equation}
+\begin{equation}\label{DW_hamiltonian}
     \mathbf{H}_{\text{DW}} = \frac{\mathbf{p}^2}{2 \mathcal{M}}  
     + \frac{\mathcal{M}^2 \omega_0^4}{64 \Delta U} \mathbf{q}^4 
     - \frac{\mathcal{M} \omega_0^2}{4} \mathbf{q}^2
@@ -58,6 +58,147 @@ density reduces to $J \left( \omega \right) \rightarrow 2 \alpha \omega$.
 
 \section{The DW-system in the DVR-basis}
 
+Now, we will calculate the form of the single double-well Hamiltionian (\ref{DW_hamiltonian})
+in the DVR-basis. For clarity, we first introduce dimensionless quantities according to 
+%
+\begin{align}
+    \tilde{\mathbf{q}} &= \sqrt{\frac{\mathcal{M}\omega_0}{\hbar}}\mathbf{q}, \ \ \ \ \ \tilde{t} = \omega_0 t, \ \ \ \ \ \tilde{T} = \frac{k_B}{\hbar \omega_0} T \\
+    \tilde{\Omega} &= \frac{\Omega}{\omega_0}, \ \ \ \ \ E_b = \frac{\Delta U}{\hbar\omega_0}, \ \ \ \ \ \tilde{\epsilon} = \sqrt{\frac{1}{\mathcal{M}\hbar\omega_0}}\epsilon .
+\end{align}
+%
+The Hamiltonian, in units of $\hbar\omega_0$, now reads
+%
+\begin{equation}
+    \tilde{\mathbf{H}}_{\text{DW}} = \frac{\tilde{\mathbf{p}}^2}{2} \\
+    + \frac{1}{64 E_b}\tilde{\mathbf{q}}^4 - \frac{1}{4}\tilde{\mathbf{q}}^2 \\
+    - \tilde{\epsilon}\tilde{\mathbf{q}}.
+\end{equation}
+%
+From now on, we will drop the tildes and only use the rescaled, dimensionless
+quantities. To obtain the eigenvalues of the position operator and the matrix elements
+of the double-well Hamiltonian, the procedure described next is peformed. Using the 
+eigenstates $\{ \ket{i} \}$ of the simple harmonic oscillator and expressing the position 
+and momentum operators in terms of ladder operators, it is possible to calculate the matrix
+elements $H_{\text{DW},mn}^{\text{SHO}}=\bra{m}\mathbf{H}_{\text{DW}}\ket{n}$,
+which is in principle an infinite-dimensional square matrix. Since we are mostly interested in the 
+lowest four energy levels, we choose to only keep the $K\times K$ submatrix consisting
+of the first $K$ rows and column. Naturally, we have to choose $K$ large enough such
+that the smallest four eigenvalues have converged sufficiently close to their asymptotic value.
+The resulting $K\times K$ matrix can then be diagonalized using standard analytical or
+numerical methods, returning $K$ energy eigenvalues $\{\mathcal{E}_1,\mathcal{E}_2,...,\mathcal{E}_K\}$
+and eigenvectors $\{\Psi_1,\Psi_2,...,\Psi_K\}$. The diagonalized matrix is then obtained as 
+%
+\begin{equation}
+    \mathbf{H}_{\text{DW}}^{\text{Eig}} = M_{\text{SHO}\rightarrow\text{Eig}} 
+    \mathbf{H}_{\text{DW}}^{\text{SHO}} M_{\text{SHO}\rightarrow\text{Eig}}^{-1}
+    = \text{diag}(\mathcal{E}_1,\mathcal{E}_2,...,\mathcal{E}_K),
+\end{equation}
+%
+with $M_{\text{SHO}\rightarrow\text{Eig}}$ being basis transformation matrix whose $k$-th 
+column is the $k$-th eigenvector $\ket{\Psi_k}$ in the SHO-basis.
+Having determined the first $K$ eigenenergies to sufficient precision, we now only keep
+the four lowest energy eigenstates such that
+%
+\begin{equation}
+    \mathbf{H}_{\text{DW}}^{\text{Eig}} = \text{diag}(\mathcal{E}_1,\mathcal{E}_2,\mathcal{E}_3,\mathcal{E}_4).
+\end{equation}
+%
+Because we are interested in the evolutions of populations of the left and right side
+of the wells, we switch to the localized basis defined by
+%
+\begin{align}
+    \ket{L_1} &= \frac{1}{\sqrt{2}} \left( \ket{\psi_1} - \ket{\psi_2} \right), \ \ \ \ \ \ket{R_1} = \frac{1}{\sqrt{2}} \left( \ket{\psi_1} + \ket{\psi_2} \right), \\
+    \ket{L_2} &= \frac{1}{\sqrt{2}} \left( \ket{\psi_3} - \ket{\psi_4} \right), \ \ \ \ \ \ket{R_2} = \frac{1}{\sqrt{2}} \left( \ket{\psi_3} + \ket{\psi_4} \right).
+\end{align}
+%
+From this definition the basis transformation matrix can be read off to be
+%
+\begin{equation}
+    M_{\text{Eig}\rightarrow\text{Loc}} = \frac{1}{\sqrt{2}}
+    \begin{pmatrix}
+        1 & -1 & 0 & 0 \\
+        1 & 1 & 0 & 0 \\
+        0 & 0 & 1 & -1 \\
+        0 & 0 & 1 & 1 
+    \end{pmatrix},
+\end{equation}
+%
+and as before, the Hamiltonian in the localized basis is 
+%
+\begin{align}
+    \mathbf{H}_{\text{DW}}^{\text{Loc}} &= M_{\text{Eig}\rightarrow\text{Loc}} 
+    \mathbf{H}_{\text{DW}}^{\text{Eig}} M_{\text{Eig}\rightarrow\text{Loc}}^{-1} \\
+    &= \sum_{i=1,2} \left[ \bar{\mathcal{E}}_i 
+    (\ket{L_i}\bra{L_i}+\ket{R_i}\bra{R_i}) - \frac{\Delta_i}{2}(\ket{L_i}\bra{R_i}+\ket{R_i}\bra{L_i})\right],
+\end{align}
+%
+with $\bar{\mathcal{E}}_1 = (\mathcal{E}_1+\mathcal{E}_2)/2$, $\bar{\mathcal{E}}_2 = (\mathcal{E}_3+\mathcal{E}_4)/2$, 
+$\Delta_1 = \mathcal{E}_2- \mathcal{E}_1$ and $\Delta_2 = \mathcal{E}_4- \mathcal{E}_3$.
+One can verify that $\bra{\psi_i}\mathbf{q}\ket{\psi_j}=\bra{\psi_j}\mathbf{q}\ket{\psi_i}$
+and that further $\bra{\psi_1}\mathbf{q}\ket{\psi_3}=\bra{\psi_2}\mathbf{q}\ket{\psi_4}=0$,
+such that one can write the position operator $\mathbf{q}$ in the localized basis as
+%
+\begin{align}
+    \mathbf{q}^{\text{Loc}} &= q_{12} ( \ket{R_1}\bra{R_1} -
+    \ket{L_1}\bra{L_1}) + q_{34} ( \ket{R_2}\bra{R_2} -
+    \ket{L_2}\bra{L_2} ) \\
+    &+ \frac{q_{12}+q_{34}}{2}( \ket{R_1}\bra{R_2}+\ket{R_2}\bra{R_1}-\ket{L_1}\bra{L_2}-\ket{L_2}\bra{L_1} ) \\
+    &+ \frac{q_{12}-q_{34}}{2}( \ket{R_2}\bra{L_1}+\ket{L_1}\bra{R_2}-\ket{L_2}\bra{R_1}-\ket{R_1}\bra{L_2} )
+\end{align}
+%
+
+
+
+Using the representation of the momentum and position operators in terms
+of the ladder operators of the simple harmonic oscillator,
+%
+\begin{equation}
+    \mathbf{q} = \frac{1}{\sqrt{2}} ( \mathbf{a} + \mathbf{a}^\dagger ), \ \ \ \ \ \\
+    \mathbf{p} = \frac{1}{\sqrt{2}\text{i}} ( \mathbf{a} - \mathbf{a}^\dagger ),
+\end{equation}
+%
+we can compute the matrix elements of the Hamiltonian in the SHO basis to be
+\begin{align}
+    \langle m | \mathbf{H}^{\text{SHO}}_{\text{DW}} | n \rangle
+    &= \frac{1}{8} \left[ (2n+1)\delta_{m,n} -3\sqrt{n(n-1)}\delta_{m,n-2}
+    - 3\sqrt{(n+1)(n+2)}\delta_{m,n+2} \right] \\
+    &+ \frac{1}{256E_b} \left[ \sqrt{n(n-1)(n-2)(n-3)}\delta_{m,n-4}+2(2n-1)\sqrt{n(n-1)}\delta_{m,n-2} \right.\\ 
+    &+ \left. 3(2n^2+2n+1)\delta_{m,n} + 2(2n+3)\sqrt{(n+1)(n+2)}\delta_{m,n+2} \right. \\
+    &+ \sqrt{(n+1)(n+2)(n+3)(n+4)}\delta_{m,n+4} \left. \vphantom{\sqrt{(1)}}\right].
+\end{align}
+%
+We then take the submatrix conisting of the first $K\in\mathbb{N}$ rows and columns of 
+$\mathbf{H}^{\text{SHO}}_{\text{DW}}$ and diagonalize it. Since $K$ has to be chosen such 
+that the resulting eigenvalues have converged closely to their actual values and is thus 
+relatively large (e.g. $K=50$), this has to be done numerically. This yields a set of 
+eigenenergies $\{\mathcal{E}_1,\mathcal{E}_2,...,\mathcal{E}_K\}$ and corresponding 
+eigenvectors 
+%
+\begin{equation}
+    \ket{\psi_i} = \sum_{k=0}^{K-1} c_k^{(i)} \ket{k},
+\end{equation}
+%
+with $\ket{k}$ being the $k$-th SHO eigenstate and $c_k^{(i)}$ being the entry in the 
+$i$-th row and $k$-th column of the basis transformation matrix. Now, we restrict our system
+to its four lowest energy eigenstates and perform a further basis transformation to
+the so-called localized basis defined by
+%
+\begin{align}
+    \ket{L_1} &= \frac{1}{\sqrt{2}} \left( \ket{\psi_1} - \ket{\psi_2} \right), \ \ \ \ \ \ket{R_1} = \frac{1}{\sqrt{2}} \left( \ket{\psi_1} + \ket{\psi_2} \right), \\
+    \ket{L_2} &= \frac{1}{\sqrt{2}} \left( \ket{\psi_3} - \ket{\psi_4} \right), \ \ \ \ \ \ket{R_2} = \frac{1}{\sqrt{2}} \left( \ket{\psi_3} + \ket{\psi_4} \right).
+\end{align}
+% 
+The Hamiltonian in the localized basis can be determined by basic matrix algebra, eventually 
+giving
+%
+\begin{equation}
+    \mathbf{H}^{\text{LOC}}_{\text{DW}} = \sum_{i=1,2} \left[ \bar{\mathcal{E}}_i \\
+    (\ket{L_i}\bra{L_i}+\ket{R_i}\bra{R_i}) - \frac{\Delta_i}{2}(\ket{L_i}\bra{R_i}+\ket{R_i}\bra{L_i})\right],
+\end{equation}
+%
+where $\bar{\mathcal{E}}_1 = (\mathcal{E}_1+\mathcal{E}_2)/2$, $\bar{\mathcal{E}}_2 = (\mathcal{E}_3+\mathcal{E}_4)/2$,
+$\Delta_1 = \mathcal{E}_2-\mathcal{E}_1$ and $\Delta_2 = \mathcal{E}_4-\mathcal{E}_3$.
+
 \section{Calculation of the Rate Matrix Elements}
 
 The Markov-approximated rate matrix elements read, to lowest order, 
@@ -74,9 +215,11 @@ autocorrelation function reading
 \begin{equation}
     Q \left( \tau \right) = S \left( \tau \right) + \text{i} R \left( \tau \right) 
     = \frac{1}{\pi} \int_{0}^{\infty} \text{d}\omega \frac{J \left( \omega \right)}{\omega^2}
-    \coth\frac{\hbar\omega\beta}{2} \Bigl[ \left( 1-\cos\omega\tau \right) + \text{i}\sin\omega\tau \Bigr] .
+    \coth\frac{\hbar\omega\beta}{2} \Bigl[ \left( 1-\cos\omega\tau \right) + \text{i}\sin\omega\tau \Bigr].
 \end{equation}
 %
+Again, as in the section before, we use dimensionless quantities as defined previously, 
+in addition of $\tilde{\Gamma}=\Gamma/\omega_0$. 
 Inserting the bath spectral density (\ref{bath_spectral_density}) and defining
 the width of the peaked bath spectral density, $\Gamma = 2 \pi \kappa \Omega$, one obtains the integral
 %
@@ -240,7 +383,7 @@ After using Euler's formula for the cosine and some rearrangement, we arrive at
 \end{equation}
 %
 after having absorbed the $q_{\mu\nu}^2$ into the barred time-independent factors and denoting
-the complex conjugate of the first summand as c.c. We notice that the integral converges
+the complex conjugate of the first summand as c.c. Notice that the integral converges
 if the condition $\bar{B}>\bar{A}$ is fulfilled, which imposes
 %
 \begin{equation}

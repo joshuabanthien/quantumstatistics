@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import DDS as dds
+import helpful_functions as hf
 
 
 params = {'text.usetex': True,
@@ -11,15 +12,16 @@ plt.rcParams.update(params)
 K=50
 E_b = 1.4
 epsilon = 0.05
+n_sys=1
 
 
-H_DVR_BASIS, Q_mu, E_n, trafmat_SHO_ENERGY, trafmat_ENERGY_LOC, trafmat_LOC_DVR = dds.calc_H_DVR_Q_mu(E_b,epsilon)
+H_DVR_BASIS, Q_DVR_BASIS, E_n, trafmat_SHO_ENERGY, trafmat_ENERGY_LOC, trafmat_LOC_DVR = dds.calc_H_DVR_Q_DVR(n_sys,E_b,epsilon)
 
 
 def Psi_n(n,x):
     result = 0
     for i in range(0, K-1):
-        result += trafmat_SHO_ENERGY[n-1][i] * dds.SHO_n(i,x)
+        result += trafmat_SHO_ENERGY[n-1][i] * hf.SHO_n(i,x)
     return result
 
 
@@ -116,14 +118,14 @@ ax3.plot(x, -q_1(x), "k--", linewidth=1, label=r'$\langle q | \alpha_1 \rangle$'
 ax3.plot(x, -q_2(x), "k:", linewidth=1, label=r'$\langle q | \alpha_2 \rangle$')
 ax3.plot(x, -q_3(x), "k-.", linewidth=1, label=r'$\langle q | \beta_2 \rangle$')
 ax3.plot(x, q_4(x), "k-", linewidth=1, label=r'$\langle q | \beta_1 \rangle$')
-ax3.plot(Q_mu[0], -1, 'x', zorder=10, clip_on=False, color='k')
-ax3.plot(Q_mu[1], -1, 'x', zorder=10, clip_on=False, color='k')
-ax3.plot(Q_mu[2], -1, 'x', zorder=10, clip_on=False, color='k')
-ax3.plot(Q_mu[3], -1, 'x', zorder=10, clip_on=False, color='k')
-ax3.text(Q_mu[0] -0.25, -1.25, r'$q_{\alpha_1}$')
-ax3.text(Q_mu[1] -0.25, -1.25, r'$q_{\alpha_2}$')
-ax3.text(Q_mu[2] -0.25, -1.25, r'$q_{\beta_2}$')
-ax3.text(Q_mu[3] -0.25, -1.25, r'$q_{\beta_1}$')
+ax3.plot(Q_DVR_BASIS[0,0], -1, 'x', zorder=10, clip_on=False, color='k')
+ax3.plot(Q_DVR_BASIS[1,1], -1, 'x', zorder=10, clip_on=False, color='k')
+ax3.plot(Q_DVR_BASIS[2,2], -1, 'x', zorder=10, clip_on=False, color='k')
+ax3.plot(Q_DVR_BASIS[3,3], -1, 'x', zorder=10, clip_on=False, color='k')
+ax3.text(Q_DVR_BASIS[0,0] -0.25, -1.25, r'$q_{\alpha_1}$')
+ax3.text(Q_DVR_BASIS[1,1] -0.25, -1.25, r'$q_{\alpha_2}$')
+ax3.text(Q_DVR_BASIS[2,2] -0.25, -1.25, r'$q_{\beta_2}$')
+ax3.text(Q_DVR_BASIS[3,3] -0.25, -1.25, r'$q_{\beta_1}$')
 ax3.set_aspect(5)
 ax3.legend(frameon=False)
 
