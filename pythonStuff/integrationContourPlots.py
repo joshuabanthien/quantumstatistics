@@ -4,6 +4,7 @@ import scipy
 import matplotlib.pyplot as plt
 
 params = {'text.usetex': True,
+          'font.size': 10,
           'text.latex.preamble': r'\usepackage{amsmath}'}
 plt.rcParams.update(params)
 
@@ -32,12 +33,12 @@ def gen_line(x_0, x_1, y_0, y_1):
 
 x=np.linspace(-10,10,2000)
 
-fig, ax1 = plt.subplots()
+fig, ax1 = plt.subplots(figsize=(3,3))
 
-x1,y1 = gen_semicircle_top(6,0,0)
-x2,y2 = gen_semicircle_top(1,0,0)
-x3,y3 = gen_line(-6, -1, 0, 0)
-x4,y4 = gen_line(1, 6, 0, 0)
+x1,y1 = gen_semicircle_top(2.75,0,0)
+x2,y2 = gen_semicircle_top(0.75,0,0)
+x3,y3 = gen_line(-2.75, -0.75, 0, 0)
+x4,y4 = gen_line(0.75, 2.75, 0, 0)
 
 ax1.spines['left'].set_position(('data', 0))
 ax1.spines['bottom'].set_position(('data', 0))
@@ -50,55 +51,63 @@ ax1.axes.yaxis.set_ticklabels([])
 
 ax1.set_xlabel(r"$\mathrm{Re}$", loc='right')
 ax1.set_ylabel(r"$\mathrm{Im}$", loc='top', rotation='horizontal')
-ax1.set_xlim(-10, 10)
-ax1.set_ylim(-5, 10)
+ax1.set_xlim(-3.5, 3.5)
+ax1.set_ylim(-1.5, 3.5)
 
 ax1.plot(x1, y1, color='k')
 ax1.plot(x2, y2, color='k')
 ax1.plot(x3, y3, color='k')
 ax1.plot(x4, y4, color='k')
 
+
+ax1.plot(0, -1, marker='x', color='k', ms=5)
+ax1.text(0.2, -0.9, r'$\text{i}\nu_{-1}$')
+
 ax1.plot(0, 0, marker='x', color='k', ms=5)
-ax1.text(0.4, -0.5, r'$\nu_0$')
-ax1.plot(0, 2.4, marker='x', color='k', ms=5)
-ax1.text(0.4, 2.4, r'$\nu_1$')
-ax1.plot(0, 4.8, marker='x', color='k', ms=5)
-ax1.text(0.4, 4.8, r'$\nu_2$')
-ax1.plot(0, 7.2, marker='x', color='k', ms=5)
-ax1.text(0.4, 7.2, r'$\nu_3$')
-ax1.plot(0, 9.6, marker='x', color='k', ms=5)
-ax1.text(0.4, 9.6, r'$\nu_4$')
-ax1.plot(0, -2.4, marker='x', color='k', ms=5)
-ax1.text(0.4, -2.9, r'$\nu_{-1}$')
-ax1.plot(0, -4.8, marker='x', color='k', ms=5)
-ax1.text(0.4, -5.3, r'$\nu_{-2}$')
-#ax1.plot(0, -7.2, marker='x', color='k', ms=5)
-#ax1.text(0.4, -7.7, r'$\nu_{-3}$')
-#ax1.plot(0, -9.6, marker='x', color='k', ms=5)
-#ax1.text(0.4, -10.1, r'$\nu_{-4}$')
+ax1.text(0.2, 0.1, r'$\text{i}\nu_0$')
 
-ax1.plot(2.4, 3.5, marker='x', color='k', ms=5)
-ax1.text(2.8, 3.5, r'$\omega_1$')
-ax1.plot(-2.4, 3.5, marker='x', color='k', ms=5)
-ax1.text(-3.4, 3.5, r'$\omega_2$')
-ax1.plot(-2.4, -3.5, marker='x', color='k', ms=5)
-ax1.text(-3.4, -4, r'$\omega_3$')
-ax1.plot(2.4, -3.5, marker='x', color='k', ms=5)
-ax1.text(2.8, -4, r'$\omega_4$')
+ax1.plot(0, 1, marker='x', color='k', ms=5)
+ax1.text(0.2, 1.1, r'$\text{i}\nu_1$')
 
-ax1.plot(-3.5, 0, marker='>', color='k', ms=5)
-ax1.plot(0, 1, marker='>', color='k', ms=5)
-ax1.plot(3.5, 0, marker='>', color='k', ms=5)
-ax1.plot(0, 6, marker='<', color='k', ms=5)
+ax1.plot(0, 2, marker='x', color='k', ms=5)
+ax1.text(0.2, 2.1, r'$\text{i}\nu_2$')
 
-ax1.arrow(0, 0, -0.62, 0.62, color='red', width=0.001, length_includes_head='True', head_width=0.1)
-ax1.arrow(0, 0, 4.15, 4.15, color='red', width=0.001, length_includes_head='True', head_width=0.1)
-ax1.text(-1, 0.7071, r'$r$', color='red')
-ax1.text(4.35, 4.242, r'$R$', color='red')
+ax1.plot(0, 3, marker='x', color='k', ms=5)
+ax1.text(0.2, 3.1, r'$\text{i}\nu_3$')
 
-ax1.plot((1), (0), ls="", marker=">", ms=3, color="k", transform=ax1.get_yaxis_transform(), clip_on=False)
-ax1.plot((0), (1), ls="", marker="^", ms=3, color="k", transform=ax1.get_xaxis_transform(), clip_on=False)
+ax1.plot(0, -1, marker='x', color='k', ms=5)
+ax1.text(0.2, -0.9, r'$\text{i}\nu_{-1}$')
+
+
+ax1.text(0.6, -0.4, r'$r$')
+ax1.text(-1, -0.4, r'$-r$')
+ax1.text(2.6, -0.4, r'$R$')
+ax1.text(-3, -0.4, r'$-R$')
+
+
+
+ax1.plot(1.1, 0.75, marker='x', color='k', ms=5)
+ax1.text(1.3, 0.85, r'$\omega_1$')
+
+ax1.plot(-1.1, 0.75, marker='x', color='k', ms=5)
+ax1.text(-1.7, 0.85, r'$\omega_2$')
+
+ax1.plot(-1.1, -0.75, marker='x', color='k', ms=5)
+ax1.text(-1.7, -1, r'$\omega_3$')
+
+ax1.plot(1.1, -0.75, marker='x', color='k', ms=5)
+ax1.text(1.3, -1, r'$\omega_4$')
+
+
+ax1.plot(-1.5, 0, marker='$>$', color='k', ms=5)
+ax1.plot(0, 0.75, marker='$>$', color='k', ms=5)
+ax1.plot(1.5, 0, marker='$>$', color='k', ms=5)
+ax1.plot(0, 2.75, marker='$<$', color='k', ms=5)
+
+
+ax1.plot((1), (0), ls="", marker=">", ms=5, color="k", transform=ax1.get_yaxis_transform(), clip_on=False)
+ax1.plot((0), (1), ls="", marker="^", ms=5, color="k", transform=ax1.get_xaxis_transform(), clip_on=False)
 ax1.set_aspect(1)
 
-plt.savefig('intContourPlot.png', dpi=300, bbox_inches='tight')
+plt.savefig('BATH_CORRELATION_FUNCTION_INTEGRATION_CONTOUR.png', dpi=300, bbox_inches='tight')
 plt.show()
